@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+
+    <!-- Custom styles for this template -->
+    <link href="static/css/homepage.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/login.css" media="screen" type="text/css" />
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">CE d'entreprise</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="templates/index.html">Accueil
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Connexion</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                      </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="container">
+        <!-- zone de connexion -->
+
+        <form action="verification.php" method="POST">
+            <h1>Connexion</h1>
+
+            <label><b>Nom d'utilisateur</b></label>
+            <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
+
+            <label><b>Mot de passe</b></label>
+            <input type="password" placeholder="Entrer le mot de passe" name="password" required>
+
+            <input type="submit" id='submit' value='LOGIN'>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+version: '3.3'
+services:
+  db:
+    image: mariadb:10.4
+    container_name: base-ce
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=baseCE
+      - MYSQL_USER=elodie
+      - MYSQL_PASSWORD=elodie
+    volumes: 
+      # le répertoire /docker-entrypoint-initdb.d peut contenir des fichiers sql à importer au démarrage de MariaDB
+      - ./db:/docker-entrypoint-initdb.d:ro
+    # ports, permet de faire un binding de port.
+    # binding : relier
+    # la syntaxe est PortDeMonOs:PortConteneur
+    # on redirige les messages du port 3306 vers 3306
+    ports:
+      - "3306:3306"
+
+  web: # serveur applicatif en Python
+    build: .
+    volumes:
+      - ./src:/code
+    environment:
+      FLASK_ENV: development
+      FLASK_APP: app.py
+      # protocole://login:pwd@url:port/basedonne
+      DB_STRING: mysql+pymysql://root:root@db:3306/baseCE
+      SRV_PORT: 5000
+    ports:
+      - "5000:5000"
+
+
+  adminer: # interface graphique pour les bases de données SQL
+    image: adminer
+    restart: always
+    ports:
+      - 8888:8080
+
+volumes:
+  postgres_data:      

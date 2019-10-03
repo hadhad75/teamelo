@@ -20,6 +20,13 @@ app.config['SQLALCHEMY_DATABASE_URI'] = DB_STRING
 app.config["SQLALCHEMY_ECHO"] = True
 db = SQLAlchemy(app)
 
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'root'
+app.config['MYSQL_DB'] = 'baseCE'
+
+mysql = MySQL(app)
+
 #demarrage des routes
 index.index_route(app)
 activite.activite_route(app)

@@ -39,3 +39,9 @@ def login_route(app):
         session.pop('id', None)
         session.pop('email', None)
         return redirect(url_for('login'))
+
+    @app.route('/loggedin/home')
+    def home():
+        if 'loggedin' in session:
+            return render_template('index.html', email=session['email'])
+        return redirect(url_for('login'))
